@@ -29,7 +29,7 @@ def main(input_dir, output_dir, crop_dim):
     image_paths = glob.glob(os.path.join(input_dir, '**/*.jpg'))
     for index, image_path in enumerate(image_paths):
         image_output_dir = os.path.join(output_dir, os.path.basename(os.path.dirname(image_path)))
-        output_path = os.path.join(image_output_dir, os.path.join(image_path))
+        output_path = os.path.join(image_output_dir, os.path.basename(image_path))
         pool.apply_async(preprocess_image, (image_path, output_path, crop_dim))
 
     pool.close()
